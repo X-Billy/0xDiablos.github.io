@@ -28,7 +28,7 @@ $ip = substr( $file, $pos, strlen( $file ) );
 $pos = strpos( $ip, '</' );
 $ip = substr( $ip, 0, $pos );
 
-$SaveIP = fopen("flag.txt",'w');
+$SaveIP = fopen("000000000000000000000000000000000000000.txt",'w');
 fwrite($SaveIP, $ip);
 
 fclose($SaveIP);
