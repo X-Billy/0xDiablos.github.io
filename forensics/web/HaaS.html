@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Web - 0xDiablos</title>
+  <link rel="shortcut icon" href="/images/diablos.png">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/blog-home.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">0xdiablos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <div class="container">
+
+        <section id="content" class="main">
+            <center><h1>(H)ashing-as-a-Service</h1></center><br>
+            This Challenge from honeynet CTF. <br> Challenge Link : <a href ="https://ctf.honeynet.org/">CTF ME</a>
+            <br>Difficulty: Medium
+            <br><br>
+            <hr>
+            <div class="col-12">
+                <span class="image fit">
+                </span>
+            </div><br>
+            First thing i do <code>Crtl + U</code>> Why..? I do that to see the source code
+            <div class="col-12">
+                <span class="image fit">
+                    <br><br><img src="/images/WebCTF/HaaS Writeup/2.PNG" class="img-fluid z-depth-1" alt="Responsive image" /><br><br>
+                </span>
+            </div><br>
+            Nothing important in the source code, oki... Let's try to write any word in the box like flag 
+            <div class="col-12">
+                <span class="image fit">
+                    <img src="/images/WebCTF/HaaS Writeup/3.PNG" class="img-fluid z-depth-1" alt="Responsive image" />
+                </span>
+            </div><br>
+            As we see the word we written is encrypted, Let's take alook to the souce code again
+            <div class="col-12">
+                <span class="image fit">
+                    <br><br><img src="/images/WebCTF/HaaS Writeup/4.PNG" class="img-fluid z-depth-1" alt="Responsive image" /><br><br>
+                </span>
+            </div><br> 
+            Okai nothing important too, ummm Let's write two words inside them <code>;</code> like <code>flag;flag</code> I think it's will be LFI vulnerability
+            <img src="/images/WebCTF/HaaS Writeup/5.PNG" class="img-fluid z-depth-1" alt="Responsive image" ><br>
+            Nice... So we discovered that he could print the first word but When we write<code> ;</code> & anything<br>
+            Oki why we don't try to write a command in the box after the <code> ;  </code>code like <code>flag;ls</code>
+            <br><br><img src="/images/WebCTF/HaaS Writeup/Printed.png" class="img-fluid z-depth-1" alt="Responsive image" /><br><br>
+            Umm, Here the command is already done but without printing 
+            <br>Easy let's add a new thing in our command 
+            <br>Like <code>anyword;ls;anyword</code>
+            <img src="/images/WebCTF/HaaS Writeup/6.PNG" class="img-fluid z-depth-1" alt="Responsive image" />
+            <br>Well, it's done
+            <br>As we see there is the file called flag.txt
+            <br>We want to open it, Let's try <code>anyword;cat flag.txt;anyword</code>
+            <img src="/images/WebCTF/HaaS Writeup/7.PNG" class="img-fluid z-depth-1" alt="Responsive image" />
+            <br>Yes we got the flag  <code>__flag__{*****************}</code><br><br>
+
+        </section>
+        
+  </div>	
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 0xdiablos team 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
