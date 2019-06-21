@@ -46,9 +46,57 @@
 
   <!-- Page Content -->
     <div class="container">
-
+-
         <section id="content" class="main">
-           
+            <center><h1>Products manager</h1></center>
+            This Challenge from Facebook CTF 2019 . <br> Challenge Link : <a href ="https://www.fbctf.com/">CTF ME</a><br>
+              Difficulty: Medium    
+              <br><br>
+                <hr>
+                Let's get started, From the first look you will think it's will be SQLi in the <b> Name of your product || Description</b>
+                <br>
+                But not precede events let's download the files then see What is inside ?
+                <br>
+                We got zip file it's time for extract the files
+                <br>
+                Nice, Now we have 6 php files but I think the important one is <b>add.php & view.php & db.php</b> , but let's take fast look at anther files
+                <br>
+                Mmmm nothing important good let's go back on our way.
+                <br>
+                Now Let's take a look at db.php file.
+                <br>
+                Wow there is good staff in the this line
+                <br></br><img src="/images/WebCTF/Products manage/db.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                I think now we know where is there FLAG, Let's continue searching probably we can get anther thing.
+                <br>
+                Until now nothing interesting more, Let's see What's inside view.php file
+                <br>
+                There is nothing interesting until now, but wait wait there is something malicious
+                <br></br><img src="/images/WebCTF/Products manage/view.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                <code>$product = get_product($name);</code> He don't care about secret, That mean we get corecet name without secret we can get the FLAG
+                <br>
+                Let's see what's inside add.php file
+                <br>
+                Mmmm, I got something but I don't know if I thinking right or not you can see there in the in the line number 40 he did IF statement but it is vulnerable we can bypass it and we got before the FLAG location <code>Facebook</code>
+                <br></br><img src="/images/WebCTF/Products manage/add.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Now I'm thinking to Bypass Product name, Let's see What should we do ?
+                <br>
+                Let's go to add product
+                <br>
+                Let's add  <code>   Facebook</code> as a Name of your product here i'm using Space just to bypass if statement then let's see what happen...
+                <br>
+                Wow it's already worked nice.
+                <br></br><img src="/images/WebCTF/Products manage/bypass.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Let's go to view our product
+                <br>
+                Yep yep We did it
+                <br></br><img src="/images/WebCTF/Products manage/flag.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                FLAG is <code>FB{*******************************************}</code>
+                <br>
+                Goodbye and see you in hard Challenge
+                <br>
+                Happpy hacking :D
+                <br><br>
         </section>
 	
 			
@@ -62,6 +110,7 @@
     </div>
     <!-- /.container -->
   </footer>
+  
 
   <!-- Bootstrap core JavaScript -->
   <script src="/vendor/jquery/jquery.min.js"></script>
