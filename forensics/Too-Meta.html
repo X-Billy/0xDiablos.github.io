@@ -44,36 +44,30 @@
   </nav>
   <br><br><br>
 
-  <div class="container">
+  <!-- Page Content -->
+    <div class="container">
 
         <section id="content" class="main">
             <span class="image main"><img src="images/Web.jpg" alt="" /></span>
-            <center><h1>BASIC ONE</h1></center>
-            <p>This Challenge from PicoCTF . <br> Challenge Link : <a href ="http://2018shell.picoctf.com:28831/">http://2018shell.picoctf.com:28831/</a><br><br>
-                <hr>
-            <div class="col-12">
-                <span class="image fit">
-                    <img src="/images/WebCTF/Basic one/Basicone.jpg" class="img-fluid z-depth-1" alt="Responsive image" />
-                </span>
-            </div><br>
-            
-            First thing i do  <code>Crtl + U </code>code Why i do that to see  source code . Sometimes you will find a message addressed to you and activated as a comment Let's see what happed after that .<br><br>
+            <center><h1>Too Meta</h1></center>
+            <p>This Challenge from honeynet . <br> Challenge Link : <a href ="https://ctf.honeynet.org/">CTF ME</a><br>
+            Difficulty: Easy    
+            <br><br>
+              <hr>
+                First we will download the pic <code>wget LINK-HERE</code><br><br>
+                Now i used strings tool to return each string of printable characters in files <br> I used grep too to search text or searches the given file for lines containing a match to the given strings or words
+                <code>strings IMG-PATH | grep flag</code><br><br>
+                <img src="/images/forensics/Too Meta writup/3.PNG" class="img-fluid z-depth-1" alt="Responsive image" />
+                <br><br> yup i got the flag __flag__{*****************} and that was easy <br><br>
+                <h4><center>Another solution</center></h4><br>
+                When i used exiftool to know what if there was the flag hidden with this pic <code>exiftool IMG-PATH</code><br><br>
+                <img src="/images/forensics/Too Meta writup/2.PNG" class="img-fluid z-depth-1" alt="Responsive image" /><br><br>
+                Actually we get the Flag But i think it's a fault from the Challenge Maker but any way we get it<br><br> Happy Hacking :D<br><br>
 
-            <img src="/images/WebCTF/Basic one/BasicSourcecode.jpg" class="img-fluid z-depth-1" alt="Responsive image" /><br><br>
-
-            Nice now we have part 1 of the flag <code>picoCTF{ur_4_real_1nspe</code> Okay What should we do now, Hmmm<br>
-            Let's see what inside myjs.js and mycss.css file you may find something about a part of the flag<br><br>
-
-            <img src="/images/WebCTF/Basic one/BasicSourcecode2.jpg" class="img-fluid z-depth-1" alt="Responsive image" /><br><br>
-
-            Yes we found it for the second time in CSS file .<br>
-            In this challenge we learn to look at the source code
-            
-
-            </p>
-        </section>
+          </section>
 	
-  </div>	
+			
+    </div>
 
 
   <!-- Footer -->
@@ -87,7 +81,6 @@
   <!-- Bootstrap core JavaScript -->
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

@@ -1,0 +1,33 @@
+
+
+
+first we will download the pic 
+
+
+
+
+then i used exiftool to know what if there was the flag hidden with this pic
+~# exif "Image path"
+
+
+and i found nothing 
+now i used strings tool to return each string of printable characters in files and i used grep too to search text or searches the given file for lines containing a match to the given strings or words
+~# strings "Image path" | grep flag
+
+
+
+
+yup i got the flag __flag__{*****************} and that was easy 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
