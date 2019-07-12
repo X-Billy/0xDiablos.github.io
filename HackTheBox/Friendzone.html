@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Web - 0xDiablos</title>
+  <link rel="shortcut icon" href="/images/diablos.png">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/blog-home.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">0xdiablos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <!-- Page Content -->
+    <div class="container">
+-
+        <section id="content" class="main">
+            <center><h1>HackTheBox-Friendzone</h1></center>
+        <h6>This Machine from HackTheBox.<br><br>
+              Difficulty: Easy<br><BR>
+              Tags: smb, Zone Transfer and  Reverse Shell.<br><br>
+              For respect:</h6><br> <img src="https://www.hackthebox.eu/badge/image/47422" alt="Hack The Box">
+
+              <br><br>
+                <hr>
+                <h2> Quick Summary </h2><br>
+                <h6> was a 20 point box. It’s released as “easy” box. Getting user was a bit
+                confusing .There were lots of rabbit holes and triggering LFI part took a huge time. Root
+                was pretty straight forward . There was a cronjob running as root. It was running a script
+                and you were able to modify the script’s library.</h6><br><hr>
+
+
+                <h2>Nmap Scan</h2><br>
+                <h6>First thing, We will start with nmap scan command
+                <code>nmap -sV 10.10.10.123</code> Basic command 
+                <br></br><img src="/images/hackthebox/Friendzone/NmapScan.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Here we got <code>80,21,53,445,443</code> I think that's enough we don't need to do full scan </h6><br><hr>
+
+
+
+
+                <h3>FTP enumeration</h3><br>
+                <h6>Here i will try to login with anonymous command <code>ncftp 10.10.10.123</code> But if you don't have ncftp you can get it using this command <code>sudo apt-get install ncftp</code>
+                <br></br><img src="/images/hackthebox/Friendzone/ncftp.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Login failed so let's see web interface.</h6> <br><hr>
+
+
+
+
+
+                <h3>Web enumeration</h3><br>
+                <h6> So here we have http and https are open.<br>
+                Here i tried gobuster but i didn't got something, So let's see SMB.</h6>
+                <br></br><img src="/images/hackthebox/Friendzone/webpage.png" height="450" width="500" /></br></br><hr>
+
+
+
+
+
+                <h3>SMB enumeration</h3><br>
+                <h6>Here we have port 445 so let's use smbclient to know if there any files we had access on it or not<br>Command: <code>smbclient -L \10.10.10.123</code>
+                <br></br><img src="/images/hackthebox/Friendzone/smbclient.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Aha we have general and Development oki Let's see what's will happen if we mount general<br>
+                Command: <code> mount -t cifs //10.10.10.123/general /mnt/general</code>
+                Note: Here i created general folder before.
+                <br></br><img src="/images/hackthebox/Friendzone/mount.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Yes, I got Creds.txt .</h6>
+                <br></br><img src="/images/hackthebox/Friendzone/Credits.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br><hr>
+
+
+
+
+
+                <h3>Rabbit Hole</h3><br>
+                <h6>Here i got a lot of rabbit holes haha. <br><br>
+                [1] I tried these Credits to take ssh. <br>
+                [2] I tried to find login page on web interface.<br>
+                [3] I tried these Credits again in ftp maybe works.<br><br>
+                Here i got the thinking to use https but again it's not working but i got the right way name of box FriendZone i think there is any Zone Transfer Oki let's go out of rabbit hole.</h6><hr>
+                
+                
+                
+                <h3>DNS Zone Transfer</h3><br>
+            <h6>After many attempts i got it. <br>
+                Command: <code> axfr @10.10.10.123 friendzone.red </code>
+                <br></br><img src="/images/hackthebox/Friendzone/zonez.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Let's put all of these in <code>/etc/hosts</code> file</h6><hr>
+
+
+
+
+                <h3>Web enumeration again</h3><br>
+            <h6>Let's see what inside administrator1.friendzone.red. <br>
+                Yes, We got login page it's try our Credits
+                <br></br><img src="/images/hackthebox/Friendzone/login.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                It's works, and now we can see dashboard.
+                <br></br><img src="/images/hackthebox/Friendzone/dashboard.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                I got this word let's try it in our url.
+            </h6><hr>
+
+
+
+
+
+                <h3>Rabbit Hole again</h3><br>
+            <h6>Here i tried a lot of think again Like.<br><br>
+                [1] I can upload something in uploads.friendzone.red. and i can see from dashboard !!<br>
+                [2] I can bypass upload file !! <br><br>
+                And finaly i remembered i have write permissions on Development so let's mount it and upload our shell there So let's go out of rabbit hole.
+                <br></br><img src="/images/hackthebox/Friendzone/dev.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+            </h6><hr>
+
+
+
+
+                <h3>Upload Reverse Shell</h3>
+                <h6>When i mount Development Folder i put it there my php Reverse Shell.<br>
+                I went back in the dashboard and i tried to find my reverse shell, So i will try to visit /etc/Development/shell.php.<br>
+                But again it's not working but i got the idea let's clear the extention from the file and boom it's working and now we have www-data shell.
+                <br></br><img src="/images/hackthebox/Friendzone/rev-shell.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                <br></br><img src="/images/hackthebox/Friendzone/www-data.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                So let's see if we can see user.txt or not, Yep we Can.
+                <br></br><img src="/images/hackthebox/Friendzone/user.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                </h6><hr>
+            
+            
+            
+            
+            <h3>Privilege Escalation</h3><br>
+        <h6>Here i got to ways to get root.txt<br>
+                Let's see what's first one.<br>
+                Iam uploaded pspy in target box then i use it <br>
+                So i got python script called:  reporter.py <br>
+                <br></br><img src="/images/hackthebox/Friendzone/reporter.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Then i found something there is cronjob is running but i don't have write permissions in this script, But i have in os lib and it's use os lib 
+                so if i add anything in os will be run when reporter.py run <br>
+                So let's add this command 
+                <br></br><img src="/images/hackthebox/Friendzone/root.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                I created pspy file and i made it hidden just for camouflage it. <br>
+                Then when reporter.py run u will get the root.txt in pspy file.<br><br</h6>
+                <br><h4>Second way</h4><br>
+            <h6>There is another Credits in the <code>/var/www/</code> there is file name mysql_data.conf cat the file.
+                <br></br><img src="/images/hackthebox/Friendzone/ssh.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Then use this Credits to login with ssh.<br>
+                <br></br><img src="/images/hackthebox/Friendzone/sshDone.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                And try again to add our last command then Boom root.txt :D<br><br></h6><hr>
+
+
+
+
+                <h5> hope u enjoyed with this writeup.
+                You can follow me on the twitter <a href="https://twitter.com/MRX_Exploit">@Mrx_Exploit</a>
+                <br><br>
+                Thanks for reading.</h5>
+
+
+
+
+
+
+
+
+
+
+
+
+                <br><br>
+        </section>
+	
+			
+    </div>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 0xdiablos team 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
