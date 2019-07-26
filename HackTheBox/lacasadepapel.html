@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Web - 0xDiablos</title>
+  <link rel="shortcut icon" href="/images/diablos.png">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/blog-home.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">0xdiablos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <!-- Page Content -->
+    <div class="container">
+-
+        <section id="content" class="main">
+            <center><h1>HackTheBox-lacasadepapel</h1></center>
+        <h6>This Machine from HackTheBox.<br>
+              Difficulty: Easy<br>
+              Tags: <a href="/Tags/HackTheBox.html">HackTheBox</a>.<br>
+              For respect:</h6><br> <img src="https://www.hackthebox.eu/badge/image/47422" alt="Hack The Box">
+
+              <br><br>
+                <hr>
+                <h2> Quick Summary </h2><br>
+                <h6> was a 20 point box. It’s released as “easy” box. Getting user was a bit
+                confusing .There were lots of rabbit holes and triggering LFI part took a huge time. Root
+                was pretty straight forward . There was a cronjob running as root. It was running a script
+                and you were able to modify the script’s library.</h6><br><hr>
+
+
+                <h2>Nmap Scan</h2><br>
+                <h6>First thing, We will start with nmap scan command
+                <code>nmap -sV 10.10.10.131</code> Basic command 
+                <br></br><img src="/images/hackthebox/Lacasadepapel/nmap.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Here we got <code>21,22,80</code> I think that's enough we don't need to do full scan until now</h6><br><hr>
+
+
+
+
+                <h3>VSFTP enumeration</h3><br>
+                <h6>I think the version is so old, So I will search if there any exploit for it or not <br>Yep i got exploit in metasploit <code>use unix/ftp/vsftpd_234_backdoor</code> <br>So let's give it try :D
+                <br></br><img src="/images/hackthebox/Lacasadepapel/msf.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Hmmm, here i tryied to do <code>nc 10.10.10.131 6200</code></h6> <br><hr>
+
+
+
+
+
+                <h3>Psy shell</h3><br>
+                <h6>When i tried <code>nc 10.10.10.131 6200</code> <br>I got psy shell, So i should to get repo taking about psy command <code>https://psysh.org/</code>
+                <br></br><img src="/images/hackthebox/Lacasadepapel/pspy.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                I tried show to get what's inside Tokyo 
+                <br></br><img src="/images/hackthebox/Lacasadepapel/tokyo.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Hmmm, There is CA file  in naibrobi USER to get it copy and paste line number 4 easy</h6><br></br><img src="/images/hackthebox/Lacasadepapel/priv.png" class="img-fluid z-depth-1" alt="Responsive image" /> <br><hr>
+
+
+
+
+
+                <h3>Web enumeration</h3><br>
+                <h6> So here we have http and https are open.<br>
+                Here i tried gobuster but i didn't got something, So let's see https.<br>
+                I found should to create pk12 file to see https contant, So let's see How can i create it <br>
+                I got nice repo for that <code>https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs</code>
+                <br>To shorten the time to create pk12 you need to do these command <br>
+                <code>openssl req -new -x509 -key private.key -out publickey.cer -days 365</code>
+                <br><code>openssl pkcs12 -export -out final_certificate.pfx -inkey private.key -in publickey.cer</code>
+                <br>when i create the pk12 file i put it in my firefox browser and finaly you can see https contant
+                <br></br>
+                <img src="/images/hackthebox/Lacasadepapel/Identi.png" class="img-fluid z-depth-1" alt="Responsive image"/>
+                <img src="/images/hackthebox/Lacasadepapel/priv area.png" class="img-fluid z-depth-1" alt="Responsive image"/></br></br>
+                So here i have two private area let's see season-1 area <br>
+                I got avi file damn, Hmm <br>
+                Then i got something in the source code what's it the avi file encoded with base64 <br>
+                So what happen if i change this to <code>Base64(../../../../../etc/passwd)</code>
+                <br>It's working wow i got passwd file, So now i have list of users let's try to get user.txt from berlin <code>Base64(../../../../home/berlin/user.txt)</code>
+                <br>NOTE: I love berlin  ❤️
+                <br></br><img src="/images/hackthebox/Lacasadepapel/userFlag.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                So we got user.txt 
+                <br>
+                After a lot of time searching how i get user shell i got id_rsa from <code>Base64(../../../../home/berlin/.ssh/id_rsa)</code>
+                <br>ssh time <code>ssh -i id_rsa professor@10.10.10.131</code>
+                <br>Why professor because it's not working with my love berlin 😂
+                </h6>
+
+
+
+            
+            
+            
+           <hr> <h3>Privilege Escalation</h3><br>
+                <h6>Now i have user shell
+                    <br></br><img src="/images/hackthebox/Lacasadepapel/professor.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Basic thing <code>ls -la </code>.
+                <br></br><img src="/images/hackthebox/Lacasadepapel/ls.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                So What is that let's <code>cat memcached.ini</code>
+                <br></br><img src="/images/hackthebox/Lacasadepapel/nobody.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Wow i think if i change this file and change memcached.js i will get shell.<br>
+                So let's change these file.
+                <br></br><img src="/images/hackthebox/Lacasadepapel/nobodychanged.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                <img src="/images/hackthebox/Lacasadepapel/beforeRoot.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                So i think now time to listen
+                <br></br><img src="/images/hackthebox/Lacasadepapel/rootShell.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Is that the end? Damn it's so easy 😂
+                let's try to cat root.txt 
+                <br></br><img src="/images/hackthebox/Lacasadepapel/root.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Damn is so easy, wow
+                <br><br></h6><hr>
+
+
+
+
+                <h5>I hope u enjoyed with this writeup.
+                You can follow me on the twitter <a href="https://twitter.com/MRX_Exploit">@Mrx_Exploit</a>
+                <br><br>
+                Thanks for reading.</h5>
+
+
+
+
+
+
+
+
+
+
+
+
+                <br><br>
+        </section>
+	
+			
+    </div>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 0xdiablos team 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
