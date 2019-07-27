@@ -57,10 +57,7 @@
               <br><br>
                 <hr>
                 <h2> Quick Summary </h2><br>
-                <h6> was a 20 point box. It’s released as “easy” box. Getting user was a bit
-                confusing .There were lots of rabbit holes and triggering LFI part took a huge time. Root
-                was pretty straight forward . There was a cronjob running as root. It was running a script
-                and you were able to modify the script’s library.</h6><br><hr>
+                <h6> LaCasaDePapel is a rather easy machine on hackthebox.eu, featuring the use of php reflection, creating and signing of client certificates and the abuse of a cronjob. Unfortunately the box was very unstable and slow for me and therefore pretty unenjoyable.</h6><br><hr>
 
 
                 <h2>Nmap Scan</h2><br>
@@ -102,14 +99,16 @@
                 <br><code>openssl pkcs12 -export -out final_certificate.pfx -inkey private.key -in publickey.cer</code>
                 <br>when i create the pk12 file i put it in my firefox browser and finaly you can see https contant
                 <br></br>
-                <img src="/images/hackthebox/Lacasadepapel/Identi.png" class="img-fluid z-depth-1" alt="Responsive image"/>
                 <img src="/images/hackthebox/Lacasadepapel/priv area.png" class="img-fluid z-depth-1" alt="Responsive image"/></br></br>
                 So here i have two private area let's see season-1 area <br>
                 I got avi file damn, Hmm <br>
-                Then i got something in the source code what's it? that's avi file encoded with base64 <br>
+                Then i got something in the source code what's it? that's avi file encoded with base64
+                <br></br><img src="/images/hackthebox/Lacasadepapel/Base64.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+
                 So what happen if i change this to <code>Base64(../../../../../etc/passwd)</code>
                 <br>It's working wow i got passwd file, So now i have list of users let's try to get user.txt from berlin <code>Base64(../../../../home/berlin/user.txt)</code>
                 <br>NOTE: I love berlin  ❤️
+                <br></br><img src="/images/hackthebox/Lacasadepapel/lfiuser.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
                 <br></br><img src="/images/hackthebox/Lacasadepapel/userFlag.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
                 So we got user.txt 
                 <br>
