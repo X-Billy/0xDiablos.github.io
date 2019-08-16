@@ -14,7 +14,7 @@ html, html * {
 img, video {z-index: 1; max-width: 100% !important;vertical-align: middle !important;}
 * {border-color: #8d0909 !important}
 cite, cite * {color: #938a8a !important}
-:link, :link * {color: #060f31 !important}
+:link, :link * {color: #88a1ce !important}
 input, textarea {background-color: #333333 !important}
 div.container {background-color: #343a40 !important}
 div.collapse.navbar-collapse {background-color: #343a40 !important}
