@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>BOF - 0xDiablos</title>
+  <link rel="shortcut icon" href="/images/diablos.png">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/blog-home.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">0xdiablos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <!-- Page Content -->
+  <div class="container" style="background: #222222 !important;">
+
+        <section id="content" class="main">
+            <center><h1>Buffer OverFlow - Stack3</h1></center>
+        <h6>This will be easy challenge.<br>
+              Difficulty: Easy<br>
+              Tags: <a href="/Tags/BoF.html">BoF</a>.<br>
+              For respect:</h6><img src="https://www.hackthebox.eu/badge/image/47422" alt="Hack The Box">
+
+              <br><br>
+                <hr>
+                <h2>Quick Summary </h2><br>
+                <h6>In the firt of all know there is a lot of tutorials published about this area Buffer OverFlow and Binary Exploitation but The best one can explain this part Live OverFlow this guy have Youtube channel and website he upload a lot of thing Related with Reverse engineering general, So today i will solve stack3 in protostar in his website.</h6><br>
+
+
+                <h2>Previous Post</h2><br>
+                <h6>If you haven’t read my previous<a href="/BoF/stack2.html"><B> post</B> </a> yet I recommend reading it before this.
+                </h6><br><hr>
+
+
+
+
+                <h3>Code Review</h3><br>
+                I will not review all the code because there is one thing only new of last post, So i think you should to go back and the see it :D
+                <img src="/images/BoF/stack3/sourceCode.png" alt="HackMe"><br><br>
+                But the new thing here there is new function called 'win' you should to call it to print the "code flow successfully changed\n"
+                <br> What ever let's run it and see what will happen with us.
+                <br><br><img src="/images/BoF/stack3/1.png" alt="HackME"><br><br>
+                Nothing happened because our input in his buffer so let's give him <code>'A'*100</code>
+                <br><br><img src="/images/BoF/stack3/3.png" alt="HackMe"><br><br>
+                Now i should to create pattern, So my best way to create it is <code>gdb-peda</code>
+                <br><br><img src="/images/BoF/stack3/4.png" alt="HackMe"><br><br>
+                After that run the program and put this pattern as input <br>
+                Now debug time <br> 
+                <code>gdb-peda$ x/xg $rsi</code><br>
+                <code>gdb-peda$ pattern offset 0x63413163</code>
+                Now we know the offset <code>64</code>, So know we need to know the addr of win function let go back and use <code>r2</code> or <code>objdump</code>or <code>gdb</code>
+                <br>what ever i will use <code>gdb</code> idk why but the important thing is the address
+                <br>
+                So to get the functions address in the <code>gdb</code> you just need to type <code>info functions</code>
+                and boom we got it <code>0x08048424</code>
+                So now attack time 
+                <br>Let's do our payload with python <code>python -c 'print "A" * 64 + "\x24\x84\x04\x08"'</code>
+                <br><br><img src="/images/BoF/stack3/done.png" alt="HackMe"><br><br>
+                
+                
+                
+                
+                <br>Damn thats so easy <br>
+                And we did it 
+              </h6><hr>
+                <h5>I hope u enjoyed with this writeup.
+                You can follow me on the twitter <a href="https://twitter.com/MRX_Exploit">@Mrx_Exploit</a>
+                <br><br>
+                Thanks for reading.</h5>
+
+                <br><br>
+        </section>
+	
+			
+    </div>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 0xdiablos team 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
