@@ -57,7 +57,7 @@
               <br><br>
                 <hr>
                 <h2>Quick Summary </h2><br>
-                <h6>In the firt of all know there is a lot of tutorials published about this area Buffer OverFlow and Binary Exploitation but The best one can explain this part Live OverFlow this guy have Youtube channel and website he upload a lot of thing Related with Reverse engineering general, So today i will solve stack3 in protostar in his website.</h6><br>
+                <h6>In the first of all know there is a lot of tutorials published about this area Buffer OverFlow and Binary Exploitation but The best one can explain this part Live OverFlow this guy have Youtube channel and website he upload a lot of thing Related with Reverse engineering general, So today i will solve stack3 in protostar in his website.</h6><br>
 
 
                 <h2>Previous Post</h2><br>
@@ -79,7 +79,7 @@
                 <br><br><img src="/images/BoF/stack3/4.png" alt="HackMe"><br><br>
                 After that run the program and put this pattern as input <br>
                 Now debug time <br> 
-                <code>gdb-peda$ x/xg $rsi</code><br>
+                <code>gdb-peda$ x/xg $rsp</code><br>
                 <code>gdb-peda$ pattern offset 0x63413163</code>
                 Now we know the offset <code>64</code>, So know we need to know the addr of win function let go back and use <code>r2</code> or <code>objdump</code>or <code>gdb</code>
                 <br>what ever i will use <code>gdb</code> idk why but the important thing is the address

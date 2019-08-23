@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Assembly - 0xDiablos</title>
+  <link rel="shortcut icon" href="/images/diablos.png">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/blog-home.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">0xdiablos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <!-- Page Content -->
+  <div class="container" style="background: #222222 !important;">
+
+        <section id="content" class="main">
+            <center><h1>x86 Intel Assembly - 0x01</h1></center>
+                <hr>
+                <h2>Quick Summary </h2><br>
+                <h6>In the first of all know there is a lot of Bookes and tutorials published about this area and i think you afraid from Assembly but trust me its so easy and you will see that in my tutorial.</h6><br><hr>
+
+
+
+
+                <h3>Integer Constants or Integer literal</h3><br>
+                Is made up of an optional leading sign, one or more digits, and an optional suffix character called a <code> radix</code> indicating the number base.
+                <br><br>
+                <code>Radix</code> may be one of the following <code> uppercase or lowercase</code>
+                <br>
+              </h6>
+              
+              
+              
+              <table>
+                <tbody>
+                  <tr>
+                    <td>h
+                    <td>Hexadecimal
+                  <tr>
+                    <td>q/o
+                    <td>Octal
+                  <tr>
+                    <td>d
+                    <td>Decimal
+                  <tr>
+                    <td>b
+                    <td>Binary
+                  <tr>
+                    <td>r
+                    <td>Encoded real
+                  <tr>
+                    <td>t
+                    <td>Decimal altrenate
+                  <tr>
+                    <td>y
+                    <td>Binary altrenate
+                </tbody>
+              </table>
+              
+
+              <br><br><hr><h3>Example</h3><br>
+              <h6>Here i will tell you examples of using different <code>Radixes</code></h6>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1Ah
+                    <td>Hexadecimal
+                  <tr>
+                    <td>42o
+                    <td>Octal
+                  <tr>
+                    <td>26
+                    <td>Decimal
+                  <tr>
+                    <td>11010011
+                    <td>Binary
+                </tbody>
+              </table>
+              <br><br>
+
+
+
+              <hr><h3>Integer Expressions</h3><br>
+              <h6>
+
+                Is a mathematical expression involving integer values and arithmetic operators.
+                <br><br>
+                The arithmetic operators are listed according to their precedence order, from highest <code>1</code> to lowest <code>4</code>. <br><br> 
+                The important thing to realize about integer experssions is that they can only be evaluated at Assembly time. these are not runtime expression</h6>
+                
+
+                <hr><h3>Arithmetic Operators</h3><br>
+
+                <table>
+                    <thead>
+                        <tr>
+                          <th>Operators
+                          <th>Name
+                          <th>Precedence level
+                      </thead>
+                    <tbody>
+                      <tr>
+                        <td>()
+                        <td>Parentheses
+                        <td>1
+
+                      <tr>
+                        <td>+, -
+                        <td>Unary plus, minus
+                        <td>2
+                      <tr>
+                        <td>*, / 
+                        <td>Multiply, divide 
+                        <td>3
+                      <tr>
+                        <td>MOD
+                        <td>Modulus
+                        <td>3
+                    </tbody>
+                  </table><br><br>
+              
+
+
+
+              <h6> Precedence refers to the implied order of operator when an expression contains two or more operators. <br>
+              The order of operations is show for the following expressions: <br></h6>
+              <table>
+                  <thead>
+                      <tr>
+                        <th>Mathematical equation
+                        <th>Value
+                        <th>Operators
+                    </thead>
+                  <tbody>
+                    <tr>
+                      <td>5 + 2 * 5
+                      <td> 15
+                      <td>Multiply, add
+                    <tr>
+                      <td>12 - 1 MOD 2
+                      <td> 11
+                      <td>Modulus, subtract
+                    <tr>
+                      <td> -1 + 10
+                      <td> 9
+                      <td>Unary minus, add
+                    <tr>
+                      <td>102 * (4 + 2)
+                      <td>612
+                      <td>Parentheses, Multiply
+                  </tbody>
+                </table>
+                <br><br>
+
+                <h6>Thank you for reading and i hope to see the next post on this easy language ❤️</h6>
+              
+              
+              <hr>
+                <h5>I hope u enjoyed with this writeup.
+                You can follow me on the twitter <a href="https://twitter.com/MRX_Exploit">@Mrx_Exploit</a>
+                <br><br>
+                Thanks for reading.</h5>
+
+                <br><br>
+        </section>
+	
+			
+    </div>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 0xdiablos team 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
