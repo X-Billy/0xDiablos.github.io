@@ -12,7 +12,7 @@ html, html * {
 }
 
 img, video {z-index: 1; max-width: 100% !important;vertical-align: middle !important;}
-* {border-color: #8d0909 !important}
+* {border-color: #3e5f5a !important}
 cite, cite * {color: #938a8a !important}
 :link, :link * {color: #88a1ce !important}
 input, textarea {background-color: #333333 !important}
