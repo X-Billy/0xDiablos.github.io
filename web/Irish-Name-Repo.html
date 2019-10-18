@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>WebSec - 0xDiablos</title>
+  <link rel="shortcut icon" href="/images/diablos.png">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/blog-home.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">0xdiablos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <!-- Page Content -->
+  <div class="container" style="background: #222222 !important;">
+
+        <section id="content" class="main">
+            <center><h1>Irish-Name-Repo 1*3 - PicoCTF 2019</h1></center>
+        <h6>This will be medium challenge.<br>
+              Difficulty: medium<br>
+              Tags: <a href="/Tags/Web.html">WebSec </a>.<br>
+
+              <br><br>
+                <hr>
+
+                <h2>Previous Post</h2><br>
+                <h6>If you haven’t read my previous<a href="/web/Products-manager.html"><B> post</B> </a> yet I recommend reading it before this.
+                </h6><br><hr>
+
+
+
+
+                <h3>Irish-Name-Repo 1</h3><br>
+                Let's see what will happen with the first one <br>
+                There are Admin login, So what!! <br>
+                For sure we will try SQli <br>
+                Let's try Basic payload <code>admin'or'1'='1 -- </code>
+                <br></br><img src="/images/WebCTF/Irish-Name-Repo/1/1.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                Flag is <code>picoCTF{s0m3_SQL_93e76603} </code> <br>
+                Easy to hack :D <br>
+                Let's see what's next <br> <br>
+
+                <hr><h3>Irish-Name-Repo 2</h3><br>
+                It's look like the first one, So let's go to the Admin Login Then let's try our Basic Payload <code>admin'or'1'='1 -- </code>
+                <br></br><img src="/images/WebCTF/Irish-Name-Repo/2/1.png" class="img-fluid z-depth-1" alt="Responsive image" /></br></br>
+                So let's see our source code probably find something important 
+                <br>We got <code>debug mode 0</code> <br>
+                So what will happen if we change it from 0 to 1 let's see what will happen
+                <br></br><img src="/images/WebCTF/Irish-Name-Repo/2/info.png" class="img-fluid z-depth-1" alt="Responsive image" /></br> <br>
+                Now we can see the SQL query <br>
+                Aha, But it's looks normal but I think there is Filtration in the <code> or </code> <br>
+                So What will happen if we did that <code>admin'--</code> <br> <br>
+
+                Flag is <code>picoCTF{m0R3_SQL_plz_83dad972}</code> <br>
+                Easy to hack again :P <br>
+                I hope to find something hard in the next one 
+                
+                <hr><h3>Irish-Name-Repo 3</h3><br>
+
+                It's look like the first one, So let's go to the Admin Login, Hmm there is something different in this one it's takes password only <br>
+                So let's see what will happen if we did debug 1 again 
+                
+                <br></br><img src="/images/WebCTF/Irish-Name-Repo/3/2.png" class="img-fluid z-depth-1" alt="Responsive image" /></br> <br>
+
+                Hmmm, I think it's takes our input then do Some Rot13 <br>
+                then let encode our payload from admin'or'1'='1 to nqzva'be'1'='1 <br><br>
+                flag is <code>picoCTF{3v3n_m0r3_SQL_ef7eac2f}</code> <br>
+                Its work now but it's looks easy again :D <br>
+                
+              </h6><hr>
+                <h5>I hope u enjoyed with this writeup.
+                You can follow me on the twitter <a href="https://twitter.com/XBilly_official">@X-billy</a>
+                <br><br>
+                Thanks for reading.</h5>
+
+                <br><br>
+        </section>
+	
+			
+    </div>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 0xdiablos team 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
