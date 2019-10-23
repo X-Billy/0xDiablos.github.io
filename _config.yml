@@ -1,0 +1,46 @@
+title: 0xDiablos {{1+1}}  
+author: Mrx-Exploit
+email: hazemhesham8080@gmail.com
+description: > # this means to ignore newlines until "show_exerpts:"
+  What's up guys Mrx-Exploit and X-billy is here
+  We are a member of the 0xDiablos team
+  We will gonna post a lot of hacking posts.
+show_excerpts: false # set to true to show excerpts on the homepage
+
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+tag_permalink_style: pretty
+tag_page_layout: tag_page
+tag_page_dir: tag
+
+# jekyll-dash date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+dash:
+  date_format: "%b %-d, %Y"
+
+  disqus:
+    shortname: 0xDiablos.github.io
+
+  # generate social links in footer
+  # supported colors: green, red, orange, blue, cyan, pink, teal, yellow, indigo, purple
+  social_links:
+    - url: https://twitter.com/MRX_Exploit
+      icon: twitter-square
+      color: cyan
+    - url: https://www.facebook.com/Human.script.01
+      icon: facebook-square
+      color: red
+    - url: https://github.com/0xDiablos
+      icon: github-square
+      color: purple
+
+# Build settings
+theme: jekyll-dash
+
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag
+ - jekyll-paginate
+ - liquid-md5
+ - jekyll/tagging

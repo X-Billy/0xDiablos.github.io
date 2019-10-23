@@ -1,11 +1,11 @@
-sudo:          false
-language:      node_js
-node_js:
-  - "node"
-install:       npm install
+before_install:
+- gem install bundler -v 2.0.1
 script:
-  - npm test
-  - gulp
-cache:
-  directories:
-    - node_modules
+- bundle install
+deploy:
+  provider: rubygems
+  api_key: $RUBYGEMS_API_KEY
+  gem: jekyll-dash
+  on:
+    tags: true
+    repo: bitbrain/jekyll-dash
