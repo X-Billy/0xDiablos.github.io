@@ -3,6 +3,7 @@ layout: post
 title:  "HackTheBox-lacasadepapel"
 description: LaCasaDePapel was awesome box.
 tags: HackTheBox FTP VSFTP WebSec Privilege-Escalation
+img: "/images/hackthebox/Lacasadepapel/banner.png"
 ---
 # Enumeration
 

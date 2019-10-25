@@ -3,6 +3,7 @@ layout: post
 title:  "Buffer OverFlow - Stack1"
 description: It's easy Buffer OverFlow all thing in offset.
 tags: Buffer-OverFlow Stack
+img: "/images/BoF/stack1/stack1.jpg"
 ---
 
 

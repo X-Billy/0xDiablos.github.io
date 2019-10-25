@@ -3,6 +3,7 @@ layout: post
 title:  "HackTheBox-Friendzone"
 description: was a 20 point box. It’s released as “easy” box.
 tags: HackTheBox FTP Web Smb Dns Privilege-Escalation
+img: "/images/hackthebox/Friendzone/banner.png"
 ---
 # Enumeration 
 
