@@ -3,6 +3,7 @@ layout: post
 title:  "Limitless from PicoCTF - Binary Exploitation"
 description: This will be medium challenge but with 0xDiablos will be easy on God `s will :D
 tags: PicoCTF Pwn Source-Code-Review 
+image: "/images/binary-exploitation/limitless"
 ---
 
 # Source Code Review
