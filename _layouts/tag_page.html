@@ -11,14 +11,17 @@ layout: default
 
       <div class="post-link-wrapper">
         <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+       
+        <div class="post-tags">
         {% for tag in page.tags %}
           <a class="tag" href="/tag/{{ tag }}/">{{ tag }}</a>
           {% endfor %}
+        </div>
+        
         <div class="post-meta">
 
-          <div class="post-tags">
           
-          </div>
+          
           {% if site.date_format %}
             {{ post.date | date: site.date_format }}
           {% else %}
