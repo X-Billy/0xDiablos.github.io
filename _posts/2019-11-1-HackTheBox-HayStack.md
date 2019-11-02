@@ -2,7 +2,7 @@
 layout: post
 title:  "HackTheBox - HayStack"
 description: was a 20 point box. It’s released as “easy” box.
-tags: hackthebox forensic api
+tags: hackthebox forensic api privilege-escalation
 img: "/images/hackthebox/heystack/banner.jpg"
 ---
 
