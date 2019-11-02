@@ -2,7 +2,7 @@
 layout: post
 title:  "Buffer OverFlow - Stack2"
 description: It's easy Buffer OverFlow all thing in env.
-tags: Pwn Buffer-OverFlow
+tags: pwn buffer-overFlow
 img: "/images/BoF/stack2/stack2.jpg"
 ---
 # Previous Post

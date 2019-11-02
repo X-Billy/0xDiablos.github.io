@@ -3,7 +3,7 @@ layout: post
 title:  "Irish-Name-Repo 1*3 - PicoCTF 2019"
 description: This will be medium challenge but with 0xDiablos will be easy on God `s will :D
 img: "/images/WebCTF/Irish-Name-Repo/banner.png"
-tags: PicoCTF WebSec Sqli 
+tags: picoCTF websec sqli 
 ---
 
 # Irish-Name-Repo 1

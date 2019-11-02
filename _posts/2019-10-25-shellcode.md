@@ -2,7 +2,7 @@
 layout: post
 title:  "shellcode 1*2 - PicoCTF 2019"
 description: It was easy but there is trick in the last thing.
-tags: PicoCTF Pwn
+tags: picoCTF pwn
 img: "/images/binary-exploitation/shellcode/banner.png"
 ---
 
