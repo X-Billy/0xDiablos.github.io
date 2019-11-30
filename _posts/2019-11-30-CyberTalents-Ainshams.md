@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title:  "CyberTalents - Ainshams University CTF2019"
 description: It was very easy Web Challenge.
@@ -216,11 +216,11 @@ And i got the index.php file
 +            </p>^M
 ```
 So now we have two ways the first one is so easy and the second one is easy  
-1. We i will vist ```
+1. I will visit ```
 DoOr1337xoe/flag
 ```.  
 
-2. We i will get RCE from bypass this line 
+2. I will get RCE from bypass this line 
 ```
 echo shell_exec('echo '.$_GET['string'].'| md5sum "-"');
 ```.   
